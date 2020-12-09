@@ -146,19 +146,19 @@ SmartPtr<T> DynamicPointerCast(const SmartPtr<U>& other){
 }
 
 template<typename T, typename U>
-SmartPtr<T> ReinterpretCast(const SmartPtr<U>& other){
+SmartPtr<T> ReinterpretPointerCast(const SmartPtr<U>& other){
     T* ptr = reinterpret_cast<T*>(other.get());
     return SmartPtr<T>(other, ptr);
 }
 
 template<typename T, typename U>
-SmartPtr<T> ConstCast(const SmartPtr<U>& other){
+SmartPtr<T> ConstPointerCast(const SmartPtr<U>& other){
     T* ptr = const_cast<T*>(other.get());
     return SmartPtr<T>(other, ptr);
 }
 
 template<typename T, typename U>
-SmartPtr<T> StaticCast(const SmartPtr<U>& other){
+SmartPtr<T> StaticPointerCast(const SmartPtr<U>& other){
     T* ptr = static_cast<T*>(other.get());
     return SmartPtr<T>(other, ptr);
 }
