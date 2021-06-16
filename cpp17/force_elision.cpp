@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <utility>
 using namespace std;
 
 class Base{
@@ -68,8 +69,27 @@ Base* foo(bool flag){
     }
 }
 
+Test foo2(Test& in){
+    cout << "foo2 lvalue...\n";
+    return in;
+}
+
+Test foo2(Test&& in){
+    cout << "foo2 prvalue...\n";
+    return in;
+}
+
+void fold(Test&& in){
+    foo2(std::forward<Test>(in));
+}
+
 int main(){
     bool s;
     cin >> s;
     foo(s);
+    cout << "-----\n";
+    Test in;
+    auto b = foo2(in);
+    cout << "-----\n";
+    fold(std::move(in));
 }
