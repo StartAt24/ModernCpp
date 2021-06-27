@@ -21,12 +21,17 @@ S(initializer_list<int> i){
     a = *i.begin();
     b =  *(i.end()-1);
 }
+S(int s){
+    cout << "constructor\n";
+    a = s;
+}
 void say(){
     cout << a << " " << b << endl;
 }
 };
 
 int main(){
-    S s{1, 3};
+    // S s{1, 3};
+    S s{1};
     s.say();
 }
